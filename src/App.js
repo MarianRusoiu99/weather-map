@@ -17,7 +17,7 @@ function App() {
     cname: "",
     data: "",
     staus: false,
-  }); //gets the current country from the weather api
+  }); //stores the current country from the weather api
 
   useEffect(() => {
     const axios = require("axios");
@@ -27,7 +27,7 @@ function App() {
       url: "https://weatherapi-com.p.rapidapi.com/current.json",
       params: { q: `${currentCountry.cname}` },
       headers: {
-        "X-RapidAPI-Key": "9a6e8cafed4p192a6fjsn8483b60e5f2d",
+        "X-RapidAPI-Key": "",
         "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
       },
     };
@@ -46,7 +46,7 @@ function App() {
       .catch(function (error) {
         console.error(error);
       });
-  }, [currentCountry]); //
+  }, [currentCountry]); // effect that makes the call to the api
 
   return (
     <>

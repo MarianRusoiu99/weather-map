@@ -28,7 +28,7 @@ export default function Dashboard() {
               : currentCountry.data.current.condition.text
           } `}</p>
           <span className="icon">
-            <img
+            <img className="icon"
               src={
                 currentCountry.data.current === undefined
                   ? ""

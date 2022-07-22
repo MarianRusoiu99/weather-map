@@ -27,12 +27,13 @@ const Map = ({ Content, clickHandler, changeCenter }) => {
             cy={250}
             r={220}
             fill="transparent"
-            stroke="#1a1a1a"
-            strokeWidth="0.5"
+            stroke="#393E41"
+            strokeWidth="1"
           />
           <Geographies
             disableOptimization
             geography="https://unpkg.com/world-atlas@2.0.2/countries-110m.json"
+            strokeWidth="1"
           >
             {(geos, proj) =>
               geos.map((geo, i) => (
@@ -54,15 +55,16 @@ const Map = ({ Content, clickHandler, changeCenter }) => {
                   style={{
                     default: {
                       outline: "none",
-                      fill: "#1a1a1a",
+                      fill: "#393E41",
+                      strokeWidth: "5"
                     },
                     hover: {
                       outline: "none",
-                      fill: "#2e2e2e",
+                      fill: "#E94F37",
                     },
                     pressed: {
                       outline: "none",
-                      fill: "#2e2e2e",
+                      fill: "#E94F37",
                     },
                   }}
                 />

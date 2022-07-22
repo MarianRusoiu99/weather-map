@@ -2,8 +2,8 @@ import React from "react";
 import Delete from "./media/delete.png";
 import { useContext } from "react";
 
-import { appContext } from "../App";
-export default function Button(props) {
+import { appContext } from "../App"; 
+export default function Button(props) {  
   const { currentCountry, saved, setSaved } = useContext(appContext);
   const handleRemove = function () {
     setSaved((prev) =>
