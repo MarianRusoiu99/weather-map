@@ -1,24 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState, createContext } from "react";
+
+import Map from "./components/Map";
+import Dashboard from "./components/Dashoard";
+
+export const appContext = createContext();
 
 function App() {
+  const [content, setContent] = useState(""); //used to pass the name of the country witch is hoovered on
+  const [saved, setSaved] = useState(
+    JSON.parse(localStorage.getItem("country"))
+      ? JSON.parse(localStorage.getItem("country"))
+      : []
+  );  // this is a list with all the countries saved in local storage, it is initialised with what is already saved
+
+  const [currentCountry, setCurrentCountry] = useState({
+    cname: "",
+    data: "",
+    staus: false,
+  }); //gets the current country from the weather api
+
+  useEffect(() => {
+    const axios = require("axios");
+
+    const options = {
+      method: "GET",
+      url: "https://weatherapi-com.p.rapidapi.com/current.json",
+      params: { q: `${currentCountry.cname}` },
+      headers: {
+        "X-RapidAPI-Key": "32a081deaemsh3fbb9a6e8cafed4p192a6fjsn8483b60e5f2d",
+        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        setCurrentCountry((prev) => {
+          return {
+            ...prev,
+            data: response.data,
+            status: true,
+          };
+        });
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, [currentCountry]); //
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <div className="App">
+        <appContext.Provider
+          value={{ currentCountry, setCurrentCountry, saved, setSaved }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <div className="map-placement">
+            <Map Content={setContent} clickHandler={setCurrentCountry} />
+          </div>
+
+          <div className="container">
+            <p className="country-name">{content}</p>
+            {currentCountry.status && <Dashboard />}
+          </div>
+        </appContext.Provider>
+      </div>
+      <div className="footer">footer</div>
+    </>
   );
 }
 

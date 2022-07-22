@@ -1,13 +1,230 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Courier New", Courier, monospace;
+  overflow-x: hidden;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+img {
+  width: 25px;
+  padding-left: 15px;
+}
+
+.Add {
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+}
+.data--item-t {
+  font-size: 20px;
+}
+.Button {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: max-content;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  cursor: pointer;
+}
+.App {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.map-placement {
+  float: right;
+  display: flex;
+  position: absolute;
+
+  top: 50px;
+  left: 20%;
+  width: 100%;
+}
+
+.country-name {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 50px;
+  background-color: white;
+  z-index: 100;
+}
+.dashboard {
+  width: auto;
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  width: 40%;
+  height: auto;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+.current-country {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 50vh;
+  align-items: center;
+  overflow: hidden;
+}
+.footer {
+  display: none;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.data--item {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+}
+.location,
+.current,
+.condition {
+  padding: 10px;
+
+  flex-wrap: wrap;
+}
+.condition {
+  text-align: center;
+}
+.current {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 1380px) {
+  .map-placement {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    width: 100%;
+  }
+  .location,
+  .current,
+  .condition {
+    padding: 0, 10px, 0, 10px;
+    align-items: center;
+  }
+  .country-name {
+    position: absolute;
+    top: -85vh;
+    width: auto;
+    left: 50vw;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 50px;
+    background-color: white;
+    z-index: 100;
+  }
+  .current-country {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+  }
+  .dashboard {
+    width: 100vw;
+    height: auto;
+    left: -1px;
+    /* padding: 15px; */
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    display: flex;
+
+    flex-direction: column;
+  }
+  .container {
+    position: absolute;
+    top: 90%;
+    left: 0;
+    width: 88%;
+  }
+  .saved-countries {
+    display: flex;
+    order: -1;
+    display: flex;
+    flex-direction: column;
+  }
+  .condition {
+    display: flex;
+    order: 1;
+  }
+  .location {
+    order: 2;
+  }
+  .current {
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .footer {
+    display: flex;
+    color: black;
+    z-index: 1000;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+  }
 }
