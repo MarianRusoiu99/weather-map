@@ -27,7 +27,7 @@ function App() {
       url: "https://weatherapi-com.p.rapidapi.com/current.json",
       params: { q: `${currentCountry.cname}` },
       headers: {
-        "X-RapidAPI-Key": "",
+        "X-RapidAPI-Key": "32a081deaemsh3fbb9a6e8cafed4p192a6fjsn8483b60e5f2d",
         "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
       },
     };
@@ -64,7 +64,7 @@ function App() {
           </div>
         </appContext.Provider>
       </div>
-      <div className="footer">footer</div>
+     
     </>
   );
 }

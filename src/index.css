@@ -193,9 +193,11 @@ img {
     align-items: center;
   }
   .dashboard {
-    width: 100vw;
+    position:relative;
+    width: 100%;
     height: auto;
-    left: -1px;
+    /* left: -1px; */
+    
     /* padding: 15px; */
     border-radius: 5px;
     background-color: #393E41;
