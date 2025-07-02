@@ -1,0 +1,265 @@
+openapi: 3.0.3
+info:
+  title: Doctor-Patient Audio Form Automation API
+  version: 1.0.0
+
+tags:
+  - name: Persons
+  - name: Meetings
+  - name: Users
+  - name: Files
+  - name: Templates
+  - name: Audio
+
+paths:
+  /api/v1/persons:
+    get:
+      tags:
+        - Persons
+      summary: List all persons
+      responses:
+        '200': { description: List of persons }
+    post:
+      tags:
+        - Persons
+      summary: Create a person
+      responses:
+        '201': { description: Person created }
+
+  /api/v1/persons/{id}:
+    get:
+      tags:
+        - Persons
+      summary: Get person by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Person data }
+    patch:
+      tags:
+        - Persons
+      summary: Update a person
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Person updated }
+    delete:
+      tags:
+        - Persons
+      summary: Soft delete a person
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '204': { description: Deleted }
+
+  /api/v1/meetings:
+    get:
+      tags:
+        - Meetings
+      summary: List all meetings
+      responses:
+        '200': { description: List of meetings }
+    post:
+      tags:
+        - Meetings
+      summary: Create a new meeting
+      responses:
+        '201': { description: Meeting created }
+
+  /api/v1/meetings/{id}:
+    get:
+      tags:
+        - Meetings
+      summary: Get meeting by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Meeting info }
+    patch:
+      tags:
+        - Meetings
+      summary: Update meeting
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Updated }
+    delete:
+      tags:
+        - Meetings
+      summary: Soft delete meeting
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '204': { description: Deleted }
+
+  /api/v1/meetings/{id}/fill:
+    get:
+      tags:
+        - Meetings
+      summary: Get AI-generated draft (returns file_id)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Returns file_id }
+
+  /api/v1/meetings/{id}/finalize:
+    post:
+      tags:
+        - Meetings
+      summary: Finalize meeting and generate PDF (returns file_id)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: File_id returned }
+
+  /api/v1/users:
+    get:
+      tags:
+        - Users
+      summary: List all users
+      responses:
+        '200': { description: List of users }
+    post:
+      tags:
+        - Users
+      summary: Create user
+      responses:
+        '201': { description: User created }
+
+  /api/v1/users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Get user by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: User details }
+    patch:
+      tags:
+        - Users
+      summary: Update user by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Updated }
+    delete:
+      tags:
+        - Users
+      summary: Delete user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '204': { description: Deleted }
+
+  /api/v1/files/{id}:
+    get:
+      tags:
+        - Files
+      summary: Retrieve file by file ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: File returned }
+    delete:
+      tags:
+        - Files
+      summary: Soft delete file by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '204': { description: File deleted }
+
+  /api/v1/templates:
+    get:
+      tags:
+        - Templates
+      summary: List templates
+      responses:
+        '200': { description: Template list }
+
+  /api/v1/templates/{id}/schema:
+    get:
+      tags:
+        - Templates
+      summary: Get JSON schema for a template
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: JSON schema for template }
+
+  /api/v1/audio/presigned-url:
+    post:
+      tags:
+        - Audio
+      summary: Generate presigned upload URL
+      responses:
+        '201': { description: Presigned URL returned }
+
+  /api/v1/audio/{id}/process:
+    post:
+      tags:
+        - Audio
+      summary: Start audio processing
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '202': { description: Processing started }
+
+  /api/v1/audio/{id}/status:
+    get:
+      tags:
+        - Audio
+      summary: Get audio processing status
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Current status }
